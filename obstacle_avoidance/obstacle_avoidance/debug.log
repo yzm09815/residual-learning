@@ -1,0 +1,200 @@
+2026-04-15 17:07:05.204638: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 17:07:05.352567: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+2026-04-15 17:07:06.522190: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-15 17:07:08.406427: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+======================================================================
+📊 复杂地图大规模批量测试
+   模式: SAC_MODE=pure_sac  →  纯 SAC（接近障碍时完全 SAC，远距离仍用 APF 跟 A*）
+   起点: (-8.0, -8.0)  终点: (8.0, 8.0)
+   回合数: 500
+   行人速度随机化: ±20%
+   行人速度倍数: ×1.0
+   单回合超时: 150s (1500 步)
+   纯SAC转向范围: ±180°
+======================================================================
+>>> 初始化 A* ...
+    地图: 100×100
+>>> 提取颗粒墙...
+    颗粒墙点数: 2500
+>>> 构建未膨胀碰撞地图...
+>>> 加载 SAC 模型: sac_pure_v7_walls_1500000_steps
+>>> 初始 A* waypoints: 7 个
+
+>>> 开始 500 回合测试...
+----------------------------------------------------------------------
+  [SAC] R=(-2.84,-4.10) yaw=  +14° | nearest=P1 d=1.43m bearing=  +16° | goal_bearing=  +34° | SAC: spd=1.77 hd=  +19° turn_from_now=   +5°
+  [SAC] R=(-2.76,-4.08) yaw=  +14° | nearest=P1 d=1.32m bearing=  +17° | goal_bearing=  +34° | SAC: spd=1.78 hd=  +17° turn_from_now=   +3°
+  [SAC] R=(-2.69,-4.06) yaw=  +14° | nearest=P1 d=1.20m bearing=  +18° | goal_bearing=  +35° | SAC: spd=1.79 hd=  +16° turn_from_now=   +2°
+  [SAC] R=(-2.60,-4.04) yaw=  +14° | nearest=P1 d=1.08m bearing=  +20° | goal_bearing=  +35° | SAC: spd=1.79 hd=  +17° turn_from_now=   +3°
+  [SAC] R=(-2.52,-4.02) yaw=  +13° | nearest=P1 d=0.96m bearing=  +23° | goal_bearing=  +36° | SAC: spd=1.80 hd=  +17° turn_from_now=   +4°
+  [SAC] R=(-2.44,-4.00) yaw=  +13° | nearest=P1 d=0.85m bearing=  +25° | goal_bearing=  +36° | SAC: spd=1.80 hd= +112° turn_from_now= +100°
+  [SAC] R=(-2.44,-3.96) yaw=  +90° | nearest=P1 d=0.79m bearing=  -52° | goal_bearing=  -41° | SAC: spd=1.87 hd=  +70° turn_from_now=  -20°
+  [SAC] R=(-2.41,-3.92) yaw=  +55° | nearest=P1 d=0.70m bearing=  -17° | goal_bearing=   -6° | SAC: spd=1.86 hd=  +93° turn_from_now=  +38°
+  [SAC] R=(-2.41,-3.87) yaw=  +90° | nearest=P1 d=0.63m bearing=  -53° | goal_bearing=  -42° | SAC: spd=1.87 hd=  +69° turn_from_now=  -21°
+  [SAC] R=(-2.37,-3.77) yaw=  +69° | nearest=P1 d=0.51m bearing=  -33° | goal_bearing=  -21° | SAC: spd=1.83 hd=  +92° turn_from_now=  +22°
+  [SAC] R=(-2.38,-3.67) yaw=  +92° | nearest=P1 d=0.42m bearing=  -59° | goal_bearing=  -43° | SAC: spd=1.87 hd=  +75° turn_from_now=  -17°
+  [SAC] R=(-2.35,-3.58) yaw=  +75° | nearest=P1 d=0.31m bearing=  -45° | goal_bearing=  -26° | SAC: spd=1.88 hd=  +86° turn_from_now=  +11°
+  [SAC] R=(-2.34,-3.48) yaw=  +86° | nearest=P1 d=0.21m bearing=  -61° | goal_bearing=  -38° | SAC: spd=1.91 hd=  +78° turn_from_now=   -8°
+  [SAC] R=(-2.32,-3.38) yaw=  +78° | nearest=P1 d=0.12m bearing=  -58° | goal_bearing=  -30° | SAC: spd=1.91 hd=  +81° turn_from_now=   +3°
+  [SAC] R=(-2.31,-3.28) yaw=  +81° | nearest=P1 d=0.03m bearing=  -68° | goal_bearing=  -33° | SAC: spd=1.91 hd=  +76° turn_from_now=   -5°
+  [SAC] R=(-2.28,-3.18) yaw=  +76° | nearest=P1 d=-0.05m bearing=  -72° | goal_bearing=  -29° | SAC: spd=1.91 hd=  +77° turn_from_now=   +1°
+  Ep 001 💥 collision_ped  steps= 136 t= 13.6s replan=0 final=(-2.3,-3.1) minped=0.48m graze=2 hit=P1
+  [SAC] R=(-3.41,-4.18) yaw=   -5° | nearest=P1 d=1.44m bearing=  +36° | goal_bearing=  +52° | SAC: spd=1.50 hd= +115° turn_from_now= +121°
+  [SAC] R=(-3.32,-4.18) yaw=   -1° | nearest=P1 d=1.32m bearing=  +34° | goal_bearing=  +48° | SAC: spd=1.52 hd= +114° turn_from_now= +115°
+  [SAC] R=(-3.24,-4.17) yaw=  +10° | nearest=P1 d=1.20m bearing=  +25° | goal_bearing=  +38° | SAC: spd=1.54 hd= +109° turn_from_now=  +99°
+  [SAC] R=(-3.16,-4.13) yaw=  +25° | nearest=P1 d=1.07m bearing=  +11° | goal_bearing=  +22° | SAC: spd=1.58 hd= +103° turn_from_now=  +77°
+  [SAC] R=(-3.11,-4.07) yaw=  +50° | nearest=P1 d=0.95m bearing=  -14° | goal_bearing=   -3° | SAC: spd=1.64 hd=  +90° turn_from_now=  +40°
+  [SAC] R=(-3.07,-4.01) yaw=  +56° | nearest=P1 d=0.83m bearing=  -20° | goal_bearing=   -9° | SAC: spd=1.65 hd=  +89° turn_from_now=  +32°
+  [SAC] R=(-3.03,-4.00) yaw=  +11° | nearest=P1 d=0.76m bearing=  +28° | goal_bearing=  +37° | SAC: spd=1.54 hd= +110° turn_from_now=  +99°
+  [SAC] R=(-3.05,-3.97) yaw= +111° | nearest=P1 d=0.70m bearing=  -73° | goal_bearing=  -64° | SAC: spd=1.66 hd=  +66° turn_from_now=  -45°
+  [SAC] R=(-3.03,-3.99) yaw=  -68° | nearest=P1 d=0.67m bearing= +109° | goal_bearing= +116° | SAC: spd=1.33 hd= +136° turn_from_now= -156°
+  [SAC] R=(-3.06,-3.97) yaw= +140° | nearest=P1 d=0.63m bearing= -100° | goal_bearing=  -93° | SAC: spd=1.88 hd=   +5° turn_from_now= -135°
+  [SAC] R=(-3.02,-3.97) yaw=   +3° | nearest=P1 d=0.56m bearing=  +40° | goal_bearing=  +44° | SAC: spd=1.91 hd=  +63° turn_from_now=  +60°
+  [SAC] R=(-3.00,-3.91) yaw=  +63° | nearest=P1 d=0.46m bearing=  -19° | goal_bearing=  -16° | SAC: spd=1.88 hd=  +45° turn_from_now=  -18°
+  [SAC] R=(-3.01,-3.95) yaw= -116° | nearest=P1 d=0.51m bearing= +163° | goal_bearing= +163° | SAC: spd=1.86 hd= +138° turn_from_now= -106°
+  [SAC] R=(-3.04,-3.92) yaw= +138° | nearest=P1 d=0.52m bearing=  -91° | goal_bearing=  -91° | SAC: spd=1.85 hd=  +29° turn_from_now= -110°
+  [SAC] R=(-3.04,-3.96) yaw=  -81° | nearest=P1 d=0.56m bearing= +133° | goal_bearing= +128° | SAC: spd=1.86 hd= +126° turn_from_now= -153°
+  [SAC] R=(-3.06,-3.93) yaw= +126° | nearest=P1 d=0.56m bearing=  -74° | goal_bearing=  -79° | SAC: spd=1.88 hd=  +31° turn_from_now=  -95°
+  [SAC] R=(-3.05,-3.96) yaw=  -68° | nearest=P1 d=0.62m bearing= +120° | goal_bearing= +115° | SAC: spd=1.92 hd= +113° turn_from_now= -179°
+  [SAC] R=(-3.06,-3.93) yaw= +114° | nearest=P1 d=0.63m bearing=  -65° | goal_bearing=  -67° | SAC: spd=1.93 hd=   +2° turn_from_now= -112°
+  [SAC] R=(-3.05,-3.96) yaw=  -64° | nearest=P1 d=0.69m bearing= +113° | goal_bearing= +111° | SAC: spd=1.92 hd= +103° turn_from_now= +167°
+  [SAC] R=(-3.06,-3.92) yaw= +105° | nearest=P1 d=0.70m bearing=  -59° | goal_bearing=  -57° | SAC: spd=1.93 hd=   +5° turn_from_now= -100°
+  [SAC] R=(-3.04,-3.95) yaw=  -52° | nearest=P1 d=0.75m bearing=  +97° | goal_bearing=  +99° | SAC: spd=1.92 hd=  +86° turn_from_now= +138°
+  [SAC] R=(-3.03,-3.91) yaw=  +80° | nearest=P1 d=0.76m bearing=  -37° | goal_bearing=  -33° | SAC: spd=1.93 hd=  +17° turn_from_now=  -63°
+  [SAC] R=(-3.01,-3.92) yaw=  -31° | nearest=P1 d=0.79m bearing=  +73° | goal_bearing=  +78° | SAC: spd=1.92 hd=  +72° turn_from_now= +103°
+  [SAC] R=(-2.99,-3.90) yaw=  +56° | nearest=P1 d=0.80m bearing=  -15° | goal_bearing=   -9° | SAC: spd=1.93 hd=  +28° turn_from_now=  -28°
+  [SAC] R=(-2.96,-3.90) yaw=  -13° | nearest=P1 d=0.83m bearing=  +54° | goal_bearing=  +61° | SAC: spd=1.92 hd=  +59° turn_from_now=  +72°
+  [SAC] R=(-2.92,-3.87) yaw=  +41° | nearest=P1 d=0.82m bearing=   -2° | goal_bearing=   +7° | SAC: spd=1.93 hd=  +34° turn_from_now=   -7°
+  [SAC] R=(-2.89,-3.87) yaw=   -6° | nearest=P1 d=0.83m bearing=  +45° | goal_bearing=  +53° | SAC: spd=1.92 hd=  +53° turn_from_now=  +59°
+  [SAC] R=(-2.84,-3.84) yaw=  +36° | nearest=P1 d=0.83m bearing=   +3° | goal_bearing=  +12° | SAC: spd=1.93 hd=  +33° turn_from_now=   -3°
+  [SAC] R=(-2.76,-3.81) yaw=  +20° | nearest=P1 d=0.79m bearing=  +19° | goal_bearing=  +28° | SAC: spd=1.93 hd=  +42° turn_from_now=  +23°
+  [SAC] R=(-2.69,-3.77) yaw=  +29° | nearest=P1 d=0.75m bearing=   +8° | goal_bearing=  +19° | SAC: spd=1.93 hd=  +36° turn_from_now=   +7°
+  [SAC] R=(-2.61,-3.73) yaw=  +25° | nearest=P1 d=0.70m bearing=  +11° | goal_bearing=  +22° | SAC: spd=1.93 hd=  +37° turn_from_now=  +11°
+  [SAC] R=(-2.53,-3.69) yaw=  +30° | nearest=P1 d=0.66m bearing=   +7° | goal_bearing=  +18° | SAC: spd=1.93 hd=  +34° turn_from_now=   +5°
+  [SAC] R=(-2.44,-3.64) yaw=  +31° | nearest=P1 d=0.60m bearing=   +4° | goal_bearing=  +17° | SAC: spd=1.14 hd= -139° turn_from_now= -170°
+  [SAC] R=(-2.47,-3.66) yaw= -139° | nearest=P1 d=0.69m bearing= +173° | goal_bearing= -173° | SAC: spd=1.90 hd=  -32° turn_from_now= +107°
+  [SAC] R=(-2.44,-3.68) yaw=  -36° | nearest=P1 d=0.72m bearing=  +71° | goal_bearing=  +84° | SAC: spd=1.84 hd=  +16° turn_from_now=  +52°
+  [SAC] R=(-2.39,-3.68) yaw=  +10° | nearest=P1 d=0.72m bearing=  +25° | goal_bearing=  +39° | SAC: spd=1.89 hd=  -56° turn_from_now=  -65°
+  [SAC] R=(-2.36,-3.72) yaw=  -53° | nearest=P1 d=0.76m bearing=  +89° | goal_bearing= +102° | SAC: spd=1.83 hd=  +45° turn_from_now=  +98°
+  [SAC] R=(-2.33,-3.70) yaw=  +36° | nearest=P1 d=0.77m bearing=   -1° | goal_bearing=  +13° | SAC: spd=1.76 hd=  +57° turn_from_now=  +21°
+  [SAC] R=(-2.27,-3.63) yaw=  +46° | nearest=P1 d=0.73m bearing=  -14° | goal_bearing=   +2° | SAC: spd=1.86 hd=  +74° turn_from_now=  +28°
+  [SAC] R=(-2.23,-3.55) yaw=  +65° | nearest=P1 d=0.70m bearing=  -35° | goal_bearing=  -16° | SAC: spd=1.85 hd=  +53° turn_from_now=  -11°
+  [SAC] R=(-2.17,-3.49) yaw=  +47° | nearest=P1 d=0.66m bearing=  -20° | goal_bearing=   +2° | SAC: spd=1.87 hd=  +73° turn_from_now=  +26°
+  [SAC] R=(-2.14,-3.40) yaw=  +73° | nearest=P1 d=0.65m bearing=  -50° | goal_bearing=  -25° | SAC: spd=1.84 hd=  +43° turn_from_now=  -30°
+  [SAC] R=(-2.07,-3.33) yaw=  +45° | nearest=P1 d=0.61m bearing=  -25° | goal_bearing=   +3° | SAC: spd=1.86 hd=  +73° turn_from_now=  +27°
+  [SAC] R=(-2.04,-3.23) yaw=  +73° | nearest=P1 d=0.61m bearing=  -57° | goal_bearing=  -25° | SAC: spd=1.84 hd=  +44° turn_from_now=  -29°
+  [SAC] R=(-1.97,-3.16) yaw=  +44° | nearest=P1 d=0.57m bearing=  -31° | goal_bearing=   +4° | SAC: spd=1.86 hd=  +71° turn_from_now=  +27°
+  [SAC] R=(-1.94,-3.07) yaw=  +71° | nearest=P1 d=0.58m bearing=  -63° | goal_bearing=  -23° | SAC: spd=1.84 hd=  +47° turn_from_now=  -25°
+  [SAC] R=(-1.87,-3.00) yaw=  +47° | nearest=P1 d=0.55m bearing=  -41° | goal_bearing=   +1° | SAC: spd=1.86 hd=  +68° turn_from_now=  +21°
+  [SAC] R=(-1.83,-2.90) yaw=  +68° | nearest=P1 d=0.56m bearing=  -67° | goal_bearing=  -20° | SAC: spd=1.84 hd=  +49° turn_from_now=  -18°
+  [SAC] R=(-1.77,-2.83) yaw=  +49° | nearest=P1 d=0.55m bearing=  -52° | goal_bearing=   -1° | SAC: spd=1.87 hd=  +63° turn_from_now=  +13°
+  [SAC] R=(-1.72,-2.74) yaw=  +63° | nearest=P1 d=0.56m bearing=  -69° | goal_bearing=  -15° | SAC: spd=1.81 hd=  +46° turn_from_now=  -16°
+  [SAC] R=(-1.65,-2.67) yaw=  +46° | nearest=P1 d=0.56m bearing=  -57° | goal_bearing=   +1° | SAC: spd=1.70 hd=  +50° turn_from_now=   +4°
+  [SAC] R=(-1.59,-2.59) yaw=  +50° | nearest=P1 d=0.56m bearing=  -64° | goal_bearing=   -2° | SAC: spd=1.61 hd=  +41° turn_from_now=   -9°
+  [SAC] R=(-1.51,-2.52) yaw=  +41° | nearest=P1 d=0.56m bearing=  -58° | goal_bearing=   +7° | SAC: spd=1.58 hd=  +42° turn_from_now=   +1°
+  [SAC] R=(-1.44,-2.46) yaw=  +42° | nearest=P1 d=0.56m bearing=  -63° | goal_bearing=   +6° | SAC: spd=1.54 hd=  +37° turn_from_now=   -6°
+  [SAC] R=(-1.36,-2.40) yaw=  +37° | nearest=P1 d=0.55m bearing=  -60° | goal_bearing=  +11° | SAC: spd=1.49 hd=  +35° turn_from_now=   -2°
+  [SAC] R=(-1.28,-2.34) yaw=  +35° | nearest=P1 d=0.55m bearing=  -61° | goal_bearing=  +13° | SAC: spd=1.50 hd=  +33° turn_from_now=   -2°
+  [SAC] R=(-1.19,-2.29) yaw=  +33° | nearest=P1 d=0.55m bearing=  -62° | goal_bearing=  +15° | SAC: spd=1.61 hd=  +35° turn_from_now=   +2°
+  [SAC] R=(-1.11,-2.23) yaw=  +35° | nearest=P1 d=0.55m bearing=  -67° | goal_bearing=  +14° | SAC: spd=1.77 hd=  +37° turn_from_now=   +3°
+  [SAC] R=(-1.03,-2.17) yaw=  +37° | nearest=P1 d=0.56m bearing=  -73° | goal_bearing=  +11° | SAC: spd=1.81 hd=  +35° turn_from_now=   -3°
+  [SAC] R=(-0.95,-2.11) yaw=  +35° | nearest=P1 d=0.57m bearing=  -74° | goal_bearing=  +14° | SAC: spd=1.85 hd=  +38° turn_from_now=   +3°
+  [SAC] R=(-0.87,-2.05) yaw=  +38° | nearest=P1 d=0.58m bearing=  -80° | goal_bearing=  +11° | SAC: spd=1.89 hd=  +38° turn_from_now=   -0°
+  [SAC] R=(-0.79,-1.99) yaw=  +38° | nearest=P1 d=0.60m bearing=  -82° | goal_bearing=  +11° | SAC: spd=1.92 hd=  +40° turn_from_now=   +2°
+  [SAC] R=(-0.72,-1.92) yaw=  +40° | nearest=P1 d=0.63m bearing=  -87° | goal_bearing=   +9° | SAC: spd=1.92 hd=  +38° turn_from_now=   -2°
+  [SAC] R=(-0.64,-1.86) yaw=  +40° | nearest=P1 d=0.66m bearing=  -90° | goal_bearing=   +9° | SAC: spd=1.92 hd=  +37° turn_from_now=   -2°
+  [SAC] R=(-0.56,-1.79) yaw=  +41° | nearest=P1 d=0.69m bearing=  -93° | goal_bearing=   +8° | SAC: spd=1.92 hd=  +36° turn_from_now=   -5°
+  [SAC] R=(-0.49,-1.73) yaw=  +41° | nearest=P1 d=0.75m bearing=  -98° | goal_bearing=   +8° | SAC: spd=1.90 hd=  +45° turn_from_now=   +4°
+  [SAC] R=(-0.42,-1.65) yaw=  +51° | nearest=P1 d=0.84m bearing= -112° | goal_bearing=   -2° | SAC: spd=1.87 hd=  +33° turn_from_now=  -18°
+  [SAC] R=(-0.35,-1.58) yaw=  +44° | nearest=P1 d=0.92m bearing= -108° | goal_bearing=   +5° | SAC: spd=1.87 hd=  +32° turn_from_now=  -12°
+  [SAC] R=(-0.28,-1.51) yaw=  +46° | nearest=P1 d=1.01m bearing= -113° | goal_bearing=   +3° | SAC: spd=1.84 hd=  +20° turn_from_now=  -26°
+  [SAC] R=(-0.21,-1.44) yaw=  +42° | nearest=P1 d=1.03m bearing= -114° | goal_bearing=   +7° | SAC: spd=1.14 hd=  -37° turn_from_now=  -79°
+  [SAC] R=(-0.11,-1.42) yaw=  +13° | nearest=P2 d=0.94m bearing=  -18° | goal_bearing=  +36° | SAC: spd=1.85 hd=  +69° turn_from_now=  +56°
+  [SAC] R=(-0.09,-1.36) yaw=  +73° | nearest=P2 d=0.87m bearing=  -81° | goal_bearing=  -24° | SAC: spd=1.90 hd=  +45° turn_from_now=  -28°
+  [SAC] R=(-0.04,-1.28) yaw=  +57° | nearest=P2 d=0.78m bearing=  -70° | goal_bearing=   -8° | SAC: spd=1.85 hd=  +62° turn_from_now=   +5°
+  [SAC] R=(-0.00,-1.19) yaw=  +69° | nearest=P2 d=0.72m bearing=  -88° | goal_bearing=  -20° | SAC: spd=1.91 hd=  +26° turn_from_now=  -42°
+  [SAC] R=(+0.08,-1.13) yaw=  +35° | nearest=P2 d=0.62m bearing=  -60° | goal_bearing=  +14° | SAC: spd=1.93 hd=   -4° turn_from_now=  -38°
+  [SAC] R=(+0.14,-1.13) yaw=   -2° | nearest=P2 d=0.53m bearing=  -26° | goal_bearing=  +52° | SAC: spd=1.75 hd= -180° turn_from_now= -177°
+  [SAC] R=(+0.10,-1.13) yaw= -180° | nearest=P2 d=0.52m bearing= +150° | goal_bearing= -131° | SAC: spd=1.95 hd=  +14° turn_from_now= -166°
+  [SAC] R=(+0.14,-1.12) yaw=  +14° | nearest=P2 d=0.46m bearing=  -48° | goal_bearing=  +35° | SAC: spd=1.90 hd= -179° turn_from_now= +167°
+  [SAC] R=(+0.10,-1.12) yaw= -179° | nearest=P2 d=0.45m bearing= +143° | goal_bearing= -132° | SAC: spd=1.95 hd=  +12° turn_from_now= -169°
+  [SAC] R=(+0.14,-1.11) yaw=  +12° | nearest=P2 d=0.40m bearing=  -52° | goal_bearing=  +37° | SAC: spd=1.92 hd= -178° turn_from_now= +170°
+  [SAC] R=(+0.10,-1.12) yaw= -178° | nearest=P2 d=0.40m bearing= +136° | goal_bearing= -133° | SAC: spd=1.96 hd=  +29° turn_from_now= -153°
+  [SAC] R=(+0.13,-1.10) yaw=  +29° | nearest=P2 d=0.36m bearing=  -76° | goal_bearing=  +20° | SAC: spd=1.90 hd=  +64° turn_from_now=  +35°
+  [SAC] R=(+0.16,-1.04) yaw=  +64° | nearest=P2 d=0.37m bearing= -119° | goal_bearing=  -15° | SAC: spd=1.95 hd=  +63° turn_from_now=   -2°
+  [SAC] R=(+0.20,-0.95) yaw=  +63° | nearest=P2 d=0.41m bearing= -126° | goal_bearing=  -14° | SAC: spd=1.96 hd=  +67° turn_from_now=   +5°
+  [SAC] R=(+0.24,-0.86) yaw=  +67° | nearest=P2 d=0.47m bearing= -137° | goal_bearing=  -18° | SAC: spd=0.01 hd=  +10° turn_from_now=  -58°
+  [SAC] R=(+0.25,-0.86) yaw=  +10° | nearest=P2 d=0.48m bearing=  -84° | goal_bearing=  +39° | SAC: spd=0.00 hd= -133° turn_from_now= -143°
+  [SAC] R=(+0.25,-0.87) yaw= -133° | nearest=P2 d=0.48m bearing=  +56° | goal_bearing= -178° | SAC: spd=1.95 hd=  -60° turn_from_now=  +74°
+  [SAC] R=(+0.27,-0.90) yaw=  -60° | nearest=P2 d=0.45m bearing=  -21° | goal_bearing= +109° | SAC: spd=0.00 hd= -153° turn_from_now=  -93°
+  [SAC] R=(+0.26,-0.90) yaw= -153° | nearest=P2 d=0.47m bearing=  +69° | goal_bearing= -158° | SAC: spd=1.94 hd=  -73° turn_from_now=  +80°
+  [SAC] R=(+0.27,-0.94) yaw=  -73° | nearest=P2 d=0.44m bearing=  -14° | goal_bearing= +122° | SAC: spd=0.02 hd= -156° turn_from_now=  -83°
+  [SAC] R=(+0.26,-0.95) yaw= -156° | nearest=P2 d=0.46m bearing=  +66° | goal_bearing= -155° | SAC: spd=1.90 hd= -113° turn_from_now=  +43°
+  [SAC] R=(+0.24,-1.00) yaw= -113° | nearest=P2 d=0.43m bearing=  +20° | goal_bearing= +162° | SAC: spd=1.09 hd= -118° turn_from_now=   -5°
+  [SAC] R=(+0.19,-1.09) yaw= -118° | nearest=P2 d=0.37m bearing=  +25° | goal_bearing= +167° | SAC: spd=1.53 hd=  -82° turn_from_now=  +36°
+  [SAC] R=(+0.20,-1.15) yaw=  -82° | nearest=P2 d=0.34m bearing=  -16° | goal_bearing= +131° | SAC: spd=1.48 hd= -124° turn_from_now=  -43°
+  [SAC] R=(+0.17,-1.20) yaw= -124° | nearest=P2 d=0.31m bearing=  +25° | goal_bearing= +174° | SAC: spd=1.73 hd=  -24° turn_from_now= +101°
+  [SAC] R=(+0.20,-1.21) yaw=  -24° | nearest=P2 d=0.34m bearing=  -81° | goal_bearing=  +73° | SAC: spd=0.60 hd= -177° turn_from_now= -153°
+  [SAC] R=(+0.18,-1.21) yaw= -177° | nearest=P2 d=0.37m bearing=  +70° | goal_bearing= -133° | SAC: spd=0.50 hd= -159° turn_from_now=  +18°
+  [SAC] R=(+0.13,-1.23) yaw= -159° | nearest=P2 d=0.38m bearing=  +51° | goal_bearing= -152° | SAC: spd=1.42 hd= -148° turn_from_now=  +11°
+  [SAC] R=(+0.05,-1.29) yaw= -148° | nearest=P2 d=0.34m bearing=  +41° | goal_bearing= -163° | SAC: spd=1.78 hd= -136° turn_from_now=  +11°
+  [SAC] R=(-0.02,-1.36) yaw= -136° | nearest=P2 d=0.29m bearing=  +30° | goal_bearing= -174° | SAC: spd=1.81 hd=  -24° turn_from_now= +112°
+  [SAC] R=(+0.01,-1.37) yaw=  -24° | nearest=P2 d=0.33m bearing=  -88° | goal_bearing=  +74° | SAC: spd=0.56 hd=  -82° turn_from_now=  -58°
+  [SAC] R=(+0.02,-1.41) yaw=  -82° | nearest=P2 d=0.35m bearing=  -33° | goal_bearing= +132° | SAC: spd=0.06 hd=   -5° turn_from_now=  +77°
+  [SAC] R=(+0.03,-1.41) yaw=   -5° | nearest=P2 d=0.40m bearing= -113° | goal_bearing=  +55° | SAC: spd=1.48 hd=  -72° turn_from_now=  -67°
+  [SAC] R=(+0.04,-1.46) yaw=  -72° | nearest=P2 d=0.41m bearing=  -51° | goal_bearing= +122° | SAC: spd=0.17 hd=  +27° turn_from_now=  +99°
+  [SAC] R=(+0.05,-1.46) yaw=  +27° | nearest=P2 d=0.47m bearing= -152° | goal_bearing=  +23° | SAC: spd=1.87 hd= -122° turn_from_now= -149°
+  [SAC] R=(+0.03,-1.49) yaw= -122° | nearest=P2 d=0.48m bearing=   -5° | goal_bearing= +172° | SAC: spd=0.11 hd= +110° turn_from_now= -128°
+  [SAC] R=(+0.03,-1.49) yaw= +110° | nearest=P2 d=0.54m bearing= +121° | goal_bearing=  -60° | SAC: spd=1.82 hd= -109° turn_from_now= +140°
+  [SAC] R=(+0.01,-1.52) yaw= -109° | nearest=P2 d=0.55m bearing=  -21° | goal_bearing= +159° | SAC: spd=0.17 hd= +112° turn_from_now= -139°
+  [SAC] R=(+0.01,-1.52) yaw= +112° | nearest=P2 d=0.58m bearing= +115° | goal_bearing=  -62° | SAC: spd=1.64 hd=  -61° turn_from_now= -172°
+  [SAC] R=(+0.03,-1.55) yaw=  -61° | nearest=P2 d=0.60m bearing=  -77° | goal_bearing= +111° | SAC: spd=1.05 hd=  -63° turn_from_now=   -2°
+  [SAC] R=(+0.08,-1.64) yaw=  -62° | nearest=P2 d=0.62m bearing=  -83° | goal_bearing= +113° | SAC: spd=1.56 hd=  -82° turn_from_now=  -20°
+  [SAC] R=(+0.09,-1.74) yaw=  -81° | nearest=P2 d=0.62m bearing=  -71° | goal_bearing= +132° | SAC: spd=1.27 hd=  -29° turn_from_now=  +52°
+  [SAC] R=(+0.15,-1.77) yaw=  -27° | nearest=P2 d=0.70m bearing= -128° | goal_bearing=  +79° | SAC: spd=0.67 hd=  +53° turn_from_now=  +80°
+  [SAC] R=(+0.16,-1.74) yaw=  +51° | nearest=P2 d=0.77m bearing= +152° | goal_bearing=   -0° | SAC: spd=1.27 hd=   +1° turn_from_now=  -51°
+  [SAC] R=(+0.22,-1.74) yaw=   +8° | nearest=P2 d=0.88m bearing= -167° | goal_bearing=  +44° | SAC: spd=1.26 hd=  +25° turn_from_now=  +18°
+  [SAC] R=(+0.31,-1.69) yaw=  +30° | nearest=P2 d=1.03m bearing= +170° | goal_bearing=  +21° | SAC: spd=1.40 hd= -151° turn_from_now= +179°
+  [SAC] R=(+0.28,-1.66) yaw= +145° | nearest=P2 d=1.06m bearing=  +55° | goal_bearing=  -94° | SAC: spd=1.46 hd= -161° turn_from_now=  +54°
+  [SAC] R=(+0.23,-1.57) yaw= +118° | nearest=P2 d=1.09m bearing=  +84° | goal_bearing=  -67° | SAC: spd=1.64 hd= -153° turn_from_now=  +89°
+  [SAC] R=(+0.22,-1.47) yaw=  +94° | nearest=P2 d=1.17m bearing= +110° | goal_bearing=  -43° | SAC: spd=1.97 hd=  -23° turn_from_now= -116°
+  [SAC] R=(+0.26,-1.46) yaw=  +22° | nearest=P2 d=1.26m bearing= -179° | goal_bearing=  +29° | SAC: spd=1.97 hd=  +11° turn_from_now=  -10°
+  [SAC] R=(+0.34,-1.40) yaw=  +37° | nearest=P2 d=1.41m bearing= +165° | goal_bearing=  +14° | SAC: spd=1.98 hd=   +6° turn_from_now=  -31°
+  [SAC] R=(+1.13,-0.51) yaw=  +49° | nearest=P4 d=1.47m bearing=   +7° | goal_bearing=   +2° | SAC: spd=1.77 hd=  -26° turn_from_now=  -75°
+  [SAC] R=(+1.19,-0.44) yaw=  +47° | nearest=P4 d=1.32m bearing=   +8° | goal_bearing=   +4° | SAC: spd=1.77 hd=  -24° turn_from_now=  -71°
+  [SAC] R=(+1.27,-0.39) yaw=  +37° | nearest=P4 d=1.18m bearing=  +18° | goal_bearing=  +15° | SAC: spd=1.77 hd=  -16° turn_from_now=  -53°
+  [SAC] R=(+1.35,-0.35) yaw=  +27° | nearest=P4 d=1.05m bearing=  +28° | goal_bearing=  +24° | SAC: spd=1.76 hd=   -8° turn_from_now=  -35°
+  [SAC] R=(+1.43,-0.32) yaw=  +21° | nearest=P4 d=0.92m bearing=  +35° | goal_bearing=  +31° | SAC: spd=1.95 hd=  -13° turn_from_now=  -33°
+  [SAC] R=(+1.51,-0.31) yaw=   +8° | nearest=P4 d=0.81m bearing=  +48° | goal_bearing=  +44° | SAC: spd=1.95 hd=   -6° turn_from_now=  -15°
+  [SAC] R=(+1.59,-0.30) yaw=   +5° | nearest=P4 d=0.70m bearing=  +52° | goal_bearing=  +48° | SAC: spd=1.97 hd=  -40° turn_from_now=  -44°
+  [SAC] R=(+1.63,-0.34) yaw=  -45° | nearest=P4 d=0.66m bearing= +103° | goal_bearing=  +98° | SAC: spd=1.97 hd=  -16° turn_from_now=  +30°
+  [SAC] R=(+1.72,-0.37) yaw=  -19° | nearest=P4 d=0.58m bearing=  +79° | goal_bearing=  +73° | SAC: spd=1.90 hd=  -43° turn_from_now=  -24°
+  [SAC] R=(+1.79,-0.44) yaw=  -43° | nearest=P4 d=0.54m bearing= +106° | goal_bearing=  +97° | SAC: spd=1.62 hd=  -55° turn_from_now=  -11°
+  [SAC] R=(+1.85,-0.52) yaw=  -55° | nearest=P4 d=0.53m bearing= +120° | goal_bearing= +109° | SAC: spd=1.80 hd=  -41° turn_from_now=  +14°
+  [SAC] R=(+1.93,-0.59) yaw=  -41° | nearest=P4 d=0.49m bearing= +109° | goal_bearing=  +96° | SAC: spd=1.72 hd=  -55° turn_from_now=  -15°
+  [SAC] R=(+1.98,-0.67) yaw=  -55° | nearest=P4 d=0.49m bearing= +127° | goal_bearing= +111° | SAC: spd=1.88 hd= -180° turn_from_now= -124°
+  [SAC] R=(+1.94,-0.67) yaw= -180° | nearest=P4 d=0.44m bearing= -113° | goal_bearing= -125° | SAC: spd=1.37 hd= -174° turn_from_now=   +6°
+  [SAC] R=(+1.85,-0.68) yaw= -174° | nearest=P4 d=0.43m bearing= -125° | goal_bearing= -131° | SAC: spd=1.39 hd= -177° turn_from_now=   -2°
+  [SAC] R=(+1.75,-0.69) yaw= -177° | nearest=P4 d=0.43m bearing= -129° | goal_bearing= -129° | SAC: spd=1.50 hd= -175° turn_from_now=   +1°
+  [SAC] R=(+1.65,-0.69) yaw= -175° | nearest=P4 d=0.45m bearing= -138° | goal_bearing= -131° | SAC: spd=1.61 hd= -174° turn_from_now=   +1°
+  [SAC] R=(+1.55,-0.70) yaw= -174° | nearest=P4 d=0.48m bearing= -145° | goal_bearing= -132° | SAC: spd=1.69 hd= -173° turn_from_now=   +1°
+  [SAC] R=(+1.45,-0.72) yaw= -173° | nearest=P4 d=0.52m bearing= -152° | goal_bearing= -134° | SAC: spd=1.72 hd= -173° turn_from_now=   -0°
+  [SAC] R=(+1.35,-0.73) yaw= -173° | nearest=P4 d=0.58m bearing= -157° | goal_bearing= -134° | SAC: spd=0.13 hd= -120° turn_from_now=  +53°
+  [SAC] R=(+1.34,-0.73) yaw= -120° | nearest=P4 d=0.56m bearing= +147° | goal_bearing= +172° | SAC: spd=1.86 hd= -154° turn_from_now=  -35°
+  [SAC] R=(+1.29,-0.76) yaw= -154° | nearest=P4 d=0.59m bearing= +178° | goal_bearing= -153° | SAC: spd=0.19 hd= -100° turn_from_now=  +54°
+  [SAC] R=(+1.29,-0.77) yaw= -100° | nearest=P4 d=0.57m bearing= +121° | goal_bearing= +152° | SAC: spd=1.81 hd= -169° turn_from_now=  -69°
+  [SAC] R=(+1.25,-0.78) yaw= -169° | nearest=P4 d=0.60m bearing= -174° | goal_bearing= -138° | SAC: spd=0.51 hd=  -80° turn_from_now=  +90°
+  [SAC] R=(+1.25,-0.80) yaw=  -80° | nearest=P4 d=0.58m bearing=  +94° | goal_bearing= +132° | SAC: spd=1.69 hd= -173° turn_from_now=  -93°
+  [SAC] R=(+1.21,-0.80) yaw= -173° | nearest=P4 d=0.61m bearing= -176° | goal_bearing= -135° | SAC: spd=0.93 hd=  -89° turn_from_now=  +84°
+  [SAC] R=(+1.21,-0.84) yaw=  -89° | nearest=P2 d=0.58m bearing=  -87° | goal_bearing= +141° | SAC: spd=1.53 hd= -119° turn_from_now=  -30°
+  [SAC] R=(+1.16,-0.93) yaw= -119° | nearest=P2 d=0.48m bearing=  -63° | goal_bearing= +172° | SAC: spd=1.40 hd=  -69° turn_from_now=  +50°
+  [SAC] R=(+1.19,-0.98) yaw=  -69° | nearest=P2 d=0.45m bearing= -119° | goal_bearing= +122° | SAC: spd=1.42 hd= -129° turn_from_now=  -60°
+  [SAC] R=(+1.15,-1.03) yaw= -129° | nearest=P2 d=0.38m bearing=  -64° | goal_bearing= -179° | SAC: spd=0.22 hd= -133° turn_from_now=   -4°
+  [SAC] R=(+1.13,-1.05) yaw= -133° | nearest=P2 d=0.33m bearing=  -64° | goal_bearing= -175° | SAC: spd=0.40 hd= -139° turn_from_now=   -7°
+  [SAC] R=(+1.10,-1.07) yaw= -139° | nearest=P2 d=0.27m bearing=  -63° | goal_bearing= -168° | SAC: spd=0.01 hd= -121° turn_from_now=  +18°
+  [SAC] R=(+1.10,-1.08) yaw= -121° | nearest=P2 d=0.23m bearing=  -85° | goal_bearing= +174° | SAC: spd=1.49 hd= -127° turn_from_now=   -6°
+  [SAC] R=(+1.04,-1.16) yaw= -127° | nearest=P2 d=0.20m bearing=  -90° | goal_bearing= -180° | SAC: spd=0.01 hd=  +81° turn_from_now= -151°
+  [SAC] R=(+1.04,-1.15) yaw=  +81° | nearest=P2 d=0.17m bearing=  +57° | goal_bearing=  -29° | SAC: spd=1.02 hd= -132° turn_from_now= +146°
+  [SAC] R=(+1.01,-1.18) yaw= -132° | nearest=P2 d=0.16m bearing=  -97° | goal_bearing= -175° | SAC: spd=0.01 hd=  +85° turn_from_now= -143°
+  [SAC] R=(+1.01,-1.18) yaw=  +85° | nearest=P2 d=0.15m bearing=  +42° | goal_bearing=  -33° | SAC: spd=1.21 hd=  -91° turn_from_now= -176°

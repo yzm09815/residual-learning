@@ -1,0 +1,17 @@
+
+    def listener_callback(self, msg):
+        # 激光雷达通常返回一个数组，正前方通常在数组中间
+        front_index = len(msg.ranges) // 2
+        distance = msg.ranges[front_index]
+        
+        if distance < 1.0:
+            self.get_logger().warn(f'前方危险！距离障碍物仅: {distance:.2f}m')
+        else:
+            self.get_logger().info(f'前方安全，距离: {distance:.2f}m')
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = ObstacleDetector()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
